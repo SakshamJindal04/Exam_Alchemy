@@ -1,0 +1,35 @@
+services:
+  # 1. The Java Backend Service
+  - type: web
+    name: exam-alchemy-api
+    region: singapore # You can change this
+    runtime: java
+    rootDir: backend
+    plan: free
+    build:
+      command: mvn clean package
+    start:
+      command: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_DATA_MONGODB_URI
+        # This now includes your password
+        value: "mongodb+srv://saksham:Sa@12345678@mo.l6elf6u.mongodb.net/examalchemy?appName=MO"
+    routes:
+      - type: rewrite
+        source: /api/:path*
+        destination: /api/:path*
+
+  # 2. The Frontend Static Site
+  - type: static
+    name: exam-alchemy-app
+    region: singapore # Use the same region
+    rootDir: frontend
+    plan: free
+    routes:
+      - type: rewrite
+        source: /api/:path*
+        # This matches the backend 'name:' above
+        destination: https://exam-alchemy-api.onrender.com/:path*
+      - type: rewrite
+        source: /*
+        destination: /index.html
