@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: exam-alchemy-app
+    region: singapore
+    runtime: node
+    rootDir: frontend
+    plan: free
+    build:
+      command: "npm install && npm run build || echo 'No build step'"
+    start:
+      command: "npx http-server ./ -p 10000"
+    routes:
+      - type: rewrite
+        source: /api/:path*
+        destination: https://exam-alchemy-api.onrender.com/:path*
+      - type: rewrite
+        source: /*
+        destination: /index.html
