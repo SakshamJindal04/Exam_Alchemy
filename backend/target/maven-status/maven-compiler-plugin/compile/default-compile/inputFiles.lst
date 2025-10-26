@@ -1,0 +1,13 @@
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/dto/JwtAuthResponse.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/controller/TestController.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/repository/UserRepository.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/security/UserDetailsServiceImpl.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/controller/AuthController.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/security/JwtAuthenticationFilter.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/config/SecurityConfig.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/ExamAlchemyApplication.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/model/User.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/security/JwtTokenProvider.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/dto/LoginRequest.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/dto/SignUpRequest.java
+/Users/sakshamjindal/Desktop/coding/Exam_Alchemy/backend/src/main/java/com/examalchemy/dto/MessageResponse.java
