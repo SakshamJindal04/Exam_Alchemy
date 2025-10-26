@@ -17,7 +17,7 @@ services:
         source: /api/:path*
         destination: /api/:path*
 
-  - type: static
+  - type: static_site
     name: exam-alchemy-app
     region: singapore
     rootDir: frontend
