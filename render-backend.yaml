@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: exam-alchemy-api
+    region: singapore
+    runtime: java
+    rootDir: backend
+    plan: free
+    build:
+      command: mvn clean package
+    start:
+      command: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_DATA_MONGODB_URI
+        value: "mongodb+srv://saksham:Sa@12345678@mo.l6elf6u.mongodb.net/examalchemy?appName=MO"
+    routes:
+      - type: rewrite
+        source: /api/:path*
+        destination: /api/:path*
