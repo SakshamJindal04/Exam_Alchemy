@@ -62,6 +62,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Use stateless sessions
             .authorizeHttpRequests(authz -> authz
                 // --- Public Endpoints ---
+                .requestMatchers("/").permitAll() // Allow root path for health check/status
                 .requestMatchers("/api/auth/**").permitAll() // Allow all auth requests
                 .requestMatchers("/api/test/public").permitAll()
                 
