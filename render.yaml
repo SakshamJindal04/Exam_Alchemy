@@ -18,7 +18,7 @@ services:
     routes:
       - type: rewrite
         source: /api/:path*
-        destination: https://exam-alchemy-api.onrender.com/:path*
+        destination: https://exam-alchemy-api.onrender.com/api/:path*
       - type: rewrite
         source: /*
         destination: /index.html
