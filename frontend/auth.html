@@ -10,6 +10,11 @@
 </head>
 <body class="auth-body">
 
+    <!-- Background Glow Blobs -->
+    <div class="blur-circle blur-circle-1"></div>
+    <div class="blur-circle blur-circle-2"></div>
+    <div class="background-pattern"></div>
+
     <nav class="auth-nav">
         <button class="btn btn-ghost" onclick="history.back()">
             <i class='bx bx-arrow-back'></i>
@@ -27,46 +32,46 @@
         </div>
     </nav>
 
-    <div class="card auth-card animate-fade-in">
+    <div class="card auth-card glass-card animate-fade-in" style="margin-top: 2rem;">
         <div class="card-header text-center">
-            <div class="auth-title">
-                <i class='bx bxs-flask text-primary'></i>
-                <h1 class="gradient-text">Exam Alchemy</h1>
-                <i class='bx bxs-sparkles text-accent'></i>
+            <div class="auth-title" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <i class='bx bxs-flask text-primary' style="font-size: 2rem;"></i>
+                <h1 class="gradient-text" style="font-size: 2rem; margin: 0;">Exam Alchemy</h1>
+                <i class='bx bxs-sparkles text-accent' style="font-size: 1.5rem;"></i>
             </div>
-            <h2>Welcome Back</h2>
-            <p class="text-muted">Sign in to your account or create a new one</p>
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-top: 0.5rem;">Welcome Back</h2>
+            <p class="text-muted" style="font-size: 0.9rem;">Sign in to your account or create a new one</p>
         </div>
-        <div class="card-content">
+        <div class="card-content" style="margin-top: 1.5rem;">
             <div class="form-group">
-                <label>I am a:</label>
+                <label class="form-label" style="margin-bottom: 0.75rem;">I am a:</label>
                 <div class="flex-gap">
-                    <button type="button" class="btn btn-primary flex-1" id="role-student">
+                    <button type="button" class="btn btn-primary flex-1" id="role-student" style="padding: 0.85rem;">
                         Student
                     </button>
-                    <button type="button" class="btn btn-outline flex-1" id="role-teacher">
+                    <button type="button" class="btn btn-outline flex-1" id="role-teacher" style="padding: 0.85rem;">
                         Teacher
                     </button>
                 </div>
             </div>
 
-            <div class="tabs">
-                <div class="tabs-list">
-                    <button class="tabs-trigger active" data-tab="login">Login</button>
-                    <button class="tabs-trigger" data-tab="signup">Sign Up</button>
+            <div class="tabs" style="margin-top: 1.5rem;">
+                <div class="tabs-list" style="display: flex; border-bottom: 2px solid rgba(0,0,0,0.05); margin-bottom: 1.5rem; padding-bottom: 0.5rem; gap: 1rem;">
+                    <button class="tabs-trigger active" data-tab="login" style="background: none; border: none; font-weight: 600; font-size: 1rem; color: var(--color-text-light); cursor: pointer; padding: 0.5rem 0; border-bottom: 2px solid transparent; transition: all 0.3s;">Login</button>
+                    <button class="tabs-trigger" data-tab="signup" style="background: none; border: none; font-weight: 600; font-size: 1rem; color: var(--color-text-light); cursor: pointer; padding: 0.5rem 0; border-bottom: 2px solid transparent; transition: all 0.3s;">Sign Up</button>
                 </div>
                 
                 <div class="tabs-content active" id="login-tab">
                     <form id="login-form" class="form-stack">
                         <div class="form-group">
-                            <label for="login-email">Email</label>
-                            <input id="login-email" type="email" placeholder="you@example.com" required>
+                            <label for="login-email" class="form-label">Email</label>
+                            <input id="login-email" class="form-input-premium" type="email" placeholder="you@example.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="login-password">Password</label>
-                            <input id="login-password" type="password" required>
+                            <label for="login-password" class="form-label">Password</label>
+                            <input id="login-password" class="form-input-premium" type="password" placeholder="••••••••" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-glow w-full" id="login-button">
+                        <button type="submit" class="btn btn-primary btn-glow w-full" id="login-button" style="padding: 0.85rem; font-size: 1rem; margin-top: 0.5rem;">
                             Sign In
                         </button>
                     </form>
@@ -75,18 +80,18 @@
                 <div class="tabs-content" id="signup-tab">
                     <form id="signup-form" class="form-stack">
                         <div class="form-group">
-                            <label for="signup-name">Full Name</label>
-                            <input id="signup-name" placeholder="John Doe" required>
+                            <label for="signup-name" class="form-label">Full Name</label>
+                            <input id="signup-name" class="form-input-premium" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
-                            <label for="signup-email">Email</label>
-                            <input id="signup-email" type="email" placeholder="you@example.com" required>
+                            <label for="signup-email" class="form-label">Email</label>
+                            <input id="signup-email" class="form-input-premium" type="email" placeholder="you@example.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="signup-password">Password</label>
-                            <input id="signup-password" type="password" required>
+                            <label for="signup-password" class="form-label">Password</label>
+                            <input id="signup-password" class="form-input-premium" type="password" placeholder="••••••••" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-glow w-full" id="signup-button">
+                        <button type="submit" class="btn btn-primary btn-glow w-full" id="signup-button" style="padding: 0.85rem; font-size: 1rem; margin-top: 0.5rem;">
                             Create Account
                         </button>
                     </form>

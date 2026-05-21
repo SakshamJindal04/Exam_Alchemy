@@ -3,177 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Exam Alchemy</title>
+    <title>About Us - Exam Alchemy</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body class="about-body">
+<body class="landing-body">
 
-    <nav class="about-nav">
-        <div class="container">
-            <div class="flex-between">
-                <div class="flex-gap">
-                    <button class="btn btn-ghost" onclick="history.back()">
-                        <i class='bx bx-arrow-back'></i>
-                        Back
-                    </button>
-                    <a href="index.html" class="nav-logo">
-                        <i class='bx bxs-flask'></i>
-                        <span class="gradient-text">Exam Alchemy</span>
-                    </a>
+    <!-- Background Glow Blobs -->
+    <div class="blur-circle blur-circle-1"></div>
+    <div class="blur-circle blur-circle-2"></div>
+    <div class="background-pattern"></div>
+
+    <!-- Navigation Header -->
+    <nav class="landing-nav">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+            <button class="btn btn-ghost" onclick="history.back()" style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class='bx bx-arrow-back'></i>
+                Back
+            </button>
+            <a href="index.html" class="btn btn-ghost" style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class='bx bxs-home'></i>
+                Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container page-content" style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem;">
+        
+        <!-- SRM KTR branding at the very top -->
+        <section class="srm-brand-container animate-fade-in">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/SRM_Institute_of_Science_and_Technology_Logo.svg" alt="SRM KTR Campus Logo" class="srm-logo-img">
+            <p class="text-sm font-semibold text-muted" style="margin: 0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.75rem;">
+                SRM Institute of Science and Technology, Kattankulathur
+            </p>
+        </section>
+
+        <!-- Project description card -->
+        <section class="animate-fade-up" style="animation-delay: 100ms;">
+            <div class="card glass-card" style="margin-bottom: 2.5rem; padding: 2.5rem;">
+                <div class="card-header" style="margin-bottom: 1.5rem; padding: 0;">
+                    <div class="card-icon-wrapper" style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="card-icon-bg bg-primary-light" style="padding: 0.75rem; border-radius: 10px; background: rgba(10, 77, 156, 0.08);">
+                            <i class='bx bxs-flask text-primary' style="font-size: 2.5rem; display: block;" class="animate-glow"></i>
+                        </div>
+                        <div>
+                            <h1 class="gradient-text" style="font-size: 2.2rem; font-weight: 700; margin: 0; line-height: 1.1;">Exam Alchemy</h1>
+                            <p class="text-muted text-sm" style="margin-top: 0.25rem;">Transforming Exam Preparation with AI Intelligence</p>
+                        </div>
+                    </div>
                 </div>
-                <a href="index.html" class="btn btn-ghost">
+                <div class="card-content" style="padding: 0; display: flex; flex-direction: column; gap: 1rem; line-height: 1.6; font-size: 0.95rem;">
+                    <p>
+                        <strong>Exam Alchemy</strong> is a highly interactive, state-of-the-art educational suite designed to simplify and supercharge exam preparation for teachers and students alike. By combining advanced text parsers with Google's generative AI, we bridge the gap between educational course documents and structured practice assessments.
+                    </p>
+                    <p>
+                        For <strong>Teachers</strong>, our dashboard offers full control over multiple question bank uploads, dynamic exam layout customization, and an AI-powered document extraction system. Teachers can drag and drop PDFs or plain text syllabus files, extract core contextual questions in seconds using local or Gemini engines, and save them straight to their persistent Question Banks.
+                    </p>
+                    <p>
+                        For <strong>Students</strong>, the platform opens an elegant repository of previous year questions, custom mock papers, and practice assessments—empowering them to practice, analyze progress, and succeed in their academic journeys.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Contact Us container styled as forest green gradient tribute -->
+        <section class="contact-section-premium animate-fade-up" style="animation-delay: 200ms;">
+            <h2 class="section-title text-center" style="font-size: 1.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 0;">
+                <i class='bx bxs-envelope animate-glow'></i> Contact Us
+            </h2>
+            
+            <!-- Faculty Mentor Card -->
+            <div class="mentor-card-premium">
+                <div class="mentor-avatar">
+                    <i class='bx bxs-graduation' style="color: #ffffff;"></i>
+                </div>
+                <h3 class="student-name-premium" style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; color: #ffffff;">
+                    Dr. S. Padmini
+                </h3>
+                <span class="badge" style="background: rgba(212, 175, 55, 0.2); color: #ffd700; border: 1px solid rgba(212, 175, 55, 0.4); padding: 0.3rem 0.75rem; font-size: 0.8rem; border-radius: 20px;">
+                    Faculty Mentor
+                </span>
+                <p class="text-sm" style="color: rgba(255, 255, 255, 0.75); margin-top: 0.75rem; margin-bottom: 0; font-size: 0.85rem; line-height: 1.4;">
+                    Department of Computer Science and Engineering<br>
+                    SRM Institute of Science and Technology, Kattankulathur
+                </p>
+            </div>
+
+            <!-- Student Developer Team Title -->
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; color: #ffffff;">
+                <i class='bx bxs-user-account'></i> Student Developer Team
+            </h3>
+            
+            <!-- Student cards grid (responsive 2-columns or mobile 1-column) -->
+            <div class="student-grid-premium">
+                
+                <!-- Student 1: Saksham Jindal -->
+                <div class="student-card-premium">
+                    <div class="student-info-top">
+                        <h4 class="student-name-premium">Saksham Jindal</h4>
+                        <span class="student-reg-premium">RA2411003010036</span>
+                    </div>
+                    <div class="student-contact-details">
+                        <a href="mailto:sj6149@srmist.edu.in" class="contact-text-link">
+                            <i class='bx bx-envelope'></i>
+                            <span>sj6149@srmist.edu.in</span>
+                        </a>
+                        <a href="tel:+8077630379" class="contact-text-link">
+                            <i class='bx bx-phone'></i>
+                            <span>+8077630379</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Student 2: Lakshya Singhal -->
+                <div class="student-card-premium">
+                    <div class="student-info-top">
+                        <h4 class="student-name-premium">Lakshya Singhal</h4>
+                        <span class="student-reg-premium">RA2411003010036</span>
+                    </div>
+                    <div class="student-contact-details">
+                        <a href="mailto:ls5165@srmist.edu.in" class="contact-text-link">
+                            <i class='bx bx-envelope'></i>
+                            <span>ls5165@srmist.edu.in</span>
+                        </a>
+                        <a href="tel:+7668622566" class="contact-text-link">
+                            <i class='bx bx-phone'></i>
+                            <span>+7668622566</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Student 3: Mohammad Nadeem -->
+                <div class="student-card-premium">
+                    <div class="student-info-top">
+                        <h4 class="student-name-premium">Mohammad Nadeem</h4>
+                        <span class="student-reg-premium">RA2411003010023</span>
+                    </div>
+                    <div class="student-contact-details">
+                        <a href="mailto:mn4220@srmist.edu.in" class="contact-text-link">
+                            <i class='bx bx-envelope'></i>
+                            <span>mn4220@srmist.edu.in</span>
+                        </a>
+                        <a href="tel:+7003068277" class="contact-text-link">
+                            <i class='bx bx-phone'></i>
+                            <span>+7003068277</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Student 4: Ayushman Singh -->
+                <div class="student-card-premium">
+                    <div class="student-info-top">
+                        <h4 class="student-name-premium">Ayushman Singh</h4>
+                        <span class="student-reg-premium">RA2411003010040</span>
+                    </div>
+                    <div class="student-contact-details">
+                        <a href="mailto:as1945@srmist.edu.in" class="contact-text-link">
+                            <i class='bx bx-envelope'></i>
+                            <span>as1945@srmist.edu.in</span>
+                        </a>
+                        <a href="tel:+7428063519" class="contact-text-link">
+                            <i class='bx bx-phone'></i>
+                            <span>+7428063519</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA back actions -->
+        <section class="cta-section" style="text-align: center; margin-top: 3rem;">
+            <div class="cta-actions" style="display: flex; justify-content: center; gap: 1rem;">
+                <a href="auth.html" class="btn btn-primary btn-glow btn-lg px-8">
+                    Get Started
+                    <i class='bx bxs-sparkles'></i>
+                </a>
+                <a href="index.html" class="btn btn-secondary btn-lg px-8">
                     <i class='bx bxs-home'></i>
                     Home
                 </a>
             </div>
-        </div>
-    </nav>
+        </section>
 
-    <main class="container page-content">
-        <div class="page-max-width">
-            
-            <section class="hero-section">
-                <div class="hero-title">
-                    <i class='bx bxs-flask text-primary animate-glow'></i>
-                    <h1 class="gradient-text">About Exam Alchemy</h1>
-                    <i class='bx bxs-sparkles text-accent'></i>
-                </div>
-                <p class="hero-subtitle">
-                    Transforming education with AI-powered exam management and intelligent question paper generation
-                </p>
-            </section>
-
-            <section class="animate-fade-up">
-                <div class="card card-hover">
-                    <div class="card-header">
-                        <div class="card-icon-wrapper">
-                            <div class="card-icon-bg bg-primary-light">
-                                <i class='bx bxs-target-lock text-primary'></i>
-                            </div>
-                            <h2 class="card-title">Our Mission</h2>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <p>
-                            Exam Alchemy is revolutionizing the way educators create and manage examinations. By harnessing the power of artificial intelligence, we're making exam preparation more efficient, effective, and accessible for both teachers and students.
-                        </p>
-                        <p>
-                            Our platform eliminates the time-consuming process of manual question paper creation while ensuring quality, diversity, and proper difficulty distribution. We believe that technology should empower educators, not replace them.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title">Core Features</h2>
-                <div class="grid grid-cols-2">
-                    <div class="card card-hover animate-fade-up" style="animation-delay: 100ms;">
-                        <div class="card-header">
-                            <div class="card-icon-wrapper">
-                                <div class="card-icon-bg bg-primary-light">
-                                    <i class='bx bxs-sparkles text-primary'></i>
-                                </div>
-                                <h3 class="card-title-sm">AI-Powered Generation</h3>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            Generate custom question papers with precise control over difficulty distribution, marks allocation, and question patterns using advanced AI algorithms.
-                        </div>
-                    </div>
-
-                    <div class="card card-hover animate-fade-up" style="animation-delay: 200ms;">
-                        <div class="card-header">
-                            <div class="card-icon-wrapper">
-                                <div class="card-icon-bg bg-primary-light">
-                                    <i class='bx bxs-zap text-primary'></i>
-                                </div>
-                                <h3 class="card-title-sm">Smart Extraction</h3>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            Extract questions automatically from PDF documents with intelligent recognition of question formats, difficulty levels, and subject categorization.
-                        </div>
-                    </div>
-
-                    <div class="card card-hover animate-fade-up" style="animation-delay: 300ms;">
-                        <div class="card-header">
-                            <div class="card-icon-wrapper">
-                                <div class="card-icon-bg bg-primary-light">
-                                    <i class='bx bxs-user-group text-primary'></i>
-                                </div>
-                                <h3 class="card-title-sm">Student-Centric</h3>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            Provide students with access to previous year questions, sample papers, and interactive practice tests to enhance their exam preparation.
-                        </div>
-                    </div>
-
-                    <div class="card card-hover animate-fade-up" style="animation-delay: 400ms;">
-                        <div class="card-header">
-                            <div class="card-icon-wrapper">
-                                <div class="card-icon-bg bg-primary-light">
-                                    <i class='bx bxs-shield-check text-primary'></i>
-                                </div>
-                                <h3 class="card-title-sm">Quality Assurance</h3>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            Maintain high standards with built-in analytics, performance tracking, and comprehensive question bank management tools.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="animate-fade-up" style="animation-delay: 500ms;">
-                <div class="card card-hover">
-                    <div class="card-header">
-                        <h2 class="card-title">Technology Stack</h2>
-                        <p class="text-muted">Built with modern, scalable technologies</p>
-                    </div>
-                    <div class="card-content">
-                        <div class="grid grid-cols-4">
-                            <div class="tech-box">
-                                <p class="font-semibold">HTML/CSS/JS</p>
-                                <p class="text-xs">Frontend</p>
-                            </div>
-                            <div class="tech-box">
-                                <p class="font-semibold">Spring Boot</p>
-                                <p class="text-xs">Backend</p>
-                            </div>
-                            <div class="tech-box">
-                                <p class="font-semibold">MongoDB</p>
-                                <p class="text-xs">Database</p>
-                            </div>
-                            <div class="tech-box">
-                                <p class="font-semibold">AI/ML</p>
-                                <p class="text-xs">Intelligence</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="cta-section">
-                <h2 class="section-title">Ready to Transform Your Exams?</h2>
-                <p class="text-muted" style="max-width: 600px; margin: 0 auto;">
-                    Join thousands of educators and students who are already experiencing the future of exam management.
-                </p>
-                <div class="cta-actions">
-                    <a href="auth.html" class="btn btn-primary btn-glow btn-lg">
-                        Get Started
-                        <i class='bx bxs-sparkles'></i>
-                    </a>
-                    <a href="index.html" class="btn btn-secondary btn-lg">
-                        <i class='bx bxs-home'></i>
-                        Back to Home
-                    </a>
-                </div>
-            </section>
-
-        </div>
     </main>
+
 </body>
 </html>

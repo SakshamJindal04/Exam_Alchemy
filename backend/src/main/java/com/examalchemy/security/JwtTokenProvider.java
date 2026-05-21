@@ -40,8 +40,8 @@ public class JwtTokenProvider {
         claims.put("username", userPrincipal.getUsername());
 
         return Jwts.builder()
-                .setSubject(userPrincipal.getEmail())
                 .setClaims(claims)
+                .setSubject(userPrincipal.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(expiryDate)
                 .signWith(getSigningKey(), SignatureAlgorithm.HS512)

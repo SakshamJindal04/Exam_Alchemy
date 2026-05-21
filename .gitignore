@@ -1,5 +1,25 @@
 # Dependencies
-node_modules
+node_modules/
+npm-debug.log*
 
 # macOS
 .DS_Store
+.DS_Store?
+._*
+
+# IDEs and editors
+.idea/
+*.iml
+*.code-workspace
+.vscode/
+
+# Maven/Java Build outputs
+**/target/
+**/*.class
+**/bin/
+**/*.jar
+**/*.war
+
+# Env
+.env
+.env.local

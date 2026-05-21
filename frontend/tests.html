@@ -35,7 +35,7 @@
                 <i class='bx bxs-dashboard'></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="papers.html" class="nav-item">
                 <i class='bx bxs-book-open'></i>
                 <span>Previous Year Questions</span>
             </a>
@@ -71,7 +71,7 @@
                     <div class="flex-gap">
                         <i class='bx bxs-time-five text-primary'></i>
                         <div>
-                            <p class="timer-time">45:23</p>
+                            <p class="timer-time" id="timer-display">45:00</p>
                             <p class="timer-label">Time Remaining</p>
                         </div>
                     </div>
@@ -136,15 +136,15 @@
                 <div class="card-content space-y-6">
                     <div class="grid grid-cols-3 gap-4">
                         <div class="result-box bg-green-light">
-                            <p class="result-value text-green">4</p>
+                            <p class="result-value text-green" id="correct-count">0</p>
                             <p class="result-label">Correct</p>
                         </div>
                         <div class="result-box bg-red-light">
-                            <p class="result-value text-red">1</p>
+                            <p class="result-value text-red" id="incorrect-count">0</p>
                             <p class="result-label">Incorrect</p>
                         </div>
                         <div class="result-box bg-primary-light">
-                            <p class="result-value text-primary">80%</p>
+                            <p class="result-value text-primary" id="score-percentage">0%</p>
                             <p class="result-label">Score</p>
                         </div>
                     </div>

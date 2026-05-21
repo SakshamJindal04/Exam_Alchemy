@@ -91,7 +91,6 @@ public class AuthController {
             roles.add("ROLE_STUDENT");
         }
         // --- End of Corrected Logic ---
-
         // Create new user's account
         User user = new User(
             signUpRequest.getUsername(),

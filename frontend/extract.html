@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- PDF.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 </head>
-<body>
+<body class="bg-secondary">
 
     <!-- ======== TOP NAVIGATION BAR (Teacher Version) ======== -->
     <header class="top-nav">
@@ -35,11 +37,11 @@
                 <i class='bx bxs-dashboard'></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="nav-item"> <!-- Link to Upload -->
+            <a href="upload.html" class="nav-item"> <!-- Link to Upload -->
                 <i class='bx bx-upload'></i>
                 <span>Upload Question Bank</span>
             </a>
-            <a href="#" class="nav-item"> <!-- Link to Generate -->
+            <a href="generate.html" class="nav-item"> <!-- Link to Generate -->
                 <i class='bx bx-atom'></i>
                 <span>Generate Paper</span>
             </a>
@@ -73,41 +75,73 @@
 
         <!-- Content Sections -->
         <div class="extract-content">
-            <div class="grid grid-cols-2">
+            <div class="grid grid-cols-2 gap-6" style="gap: 1.5rem; align-items: start;">
                 <!-- Upload Section -->
-                <div class="card animate-fade-up">
-                    <div class="card-header">
-                        <h2 class="card-title flex-gap">
-                            <i class='bx bxs-magic-wand text-primary animate-glow'></i> <!-- Sparkles icon -->
+                <div class="card glass-card animate-fade-up">
+                    <div class="card-header" style="margin-bottom: 1.25rem;">
+                        <h2 class="card-title flex-gap" style="font-size: 1.25rem; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class='bx bxs-magic-wand text-primary animate-glow'></i>
                             AI-Powered Extraction
                         </h2>
-                        <p class="text-muted text-sm">Upload a PDF and let AI extract questions automatically</p>
+                        <p class="text-muted text-sm" style="margin-top: 0.25rem;">Upload a PDF or TXT file and let AI extract questions automatically</p>
                     </div>
-                    <div class="card-content space-y-4">
-                        <div class="upload-area">
-                            <i class='bx bx-cloud-upload upload-icon'></i>
-                            <p class="text-sm text-muted mb-2">
-                                Drop PDF file here or click to browse
-                            </p>
-                            <p class="text-xs text-muted mb-4">
-                                Maximum file size: 10MB
-                            </p>
+                    <div class="card-content" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div class="drag-drop-area-premium" id="drop-zone">
+                            <i class='bx bx-cloud-upload'></i>
+                            <div style="margin-top: 0.5rem;">
+                                <p class="font-semibold text-foreground text-sm">
+                                    Drag & drop document here or click to browse
+                                </p>
+                                <p class="text-xs text-muted mt-1">
+                                    Supports PDF and TXT files (Up to 10MB)
+                                </p>
+                            </div>
                             <input
                                 type="file"
-                                accept=".pdf"
-                                class="upload-input"
+                                accept=".pdf,.txt"
+                                class="hidden"
                                 id="pdf-upload"
                             />
-                            <!-- Simple label for the input -->
-                             <label for="pdf-upload" class="btn btn-secondary">Browse Files</label>
+                            <label for="pdf-upload" class="btn btn-secondary btn-sm" style="cursor: pointer; margin-top: 0.5rem; padding: 0.5rem 1rem;">Browse Files</label>
+                        </div>
+
+                        <!-- Selected File Details Panel -->
+                        <div id="file-details-panel" class="hidden" style="background: rgba(10, 77, 156, 0.05); border: 1px solid rgba(10, 77, 156, 0.15); padding: 1rem; border-radius: 10px; display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <i class='bx bxs-file text-primary' style="font-size: 2rem;"></i>
+                                <div style="display: flex; flex-direction: column;">
+                                    <span id="file-name" class="font-semibold text-sm truncate" style="max-width: 200px;">document.pdf</span>
+                                    <span id="file-size" class="text-xs text-muted">0 KB</span>
+                                </div>
+                            </div>
+                            <button id="remove-file-btn" class="btn btn-ghost btn-sm" style="color: var(--color-red); padding: 0.25rem;"><i class='bx bx-trash' style="font-size: 1.25rem;"></i></button>
+                        </div>
+
+                        <!-- Gemini API Configuration (Stored in localStorage) -->
+                        <div class="api-key-panel">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <label for="gemini-api-key" class="font-semibold" style="font-size: 0.85rem; color: #854d0e; display: flex; align-items: center; gap: 0.25rem; margin: 0;">
+                                    <i class='bx bxs-key animate-glow'></i> Gemini API Key (Optional)
+                                </label>
+                                <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-xs font-semibold text-primary" style="text-decoration: none; display: flex; align-items: center; gap: 0.1rem;">
+                                    Get Key <i class='bx bx-link-external'></i>
+                                </a>
+                            </div>
+                            <div class="relative" style="display: flex; align-items: center;">
+                                <input id="gemini-api-key" type="password" class="form-input-premium" style="padding-right: 2.5rem; font-size: 0.85rem; border-color: rgba(212, 175, 55, 0.4);" placeholder="Paste your Gemini API key here...">
+                                <button id="toggle-key-visibility" type="button" style="position: absolute; right: 0.75rem; border: none; background: none; color: var(--color-text-light); cursor: pointer; padding: 0;"><i class='bx bx-show' style="font-size: 1.2rem;"></i></button>
+                            </div>
+                            <p class="text-xs text-muted" style="margin: 0; line-height: 1.3;">
+                                Stored locally in your browser. Leave empty to use our smart local text-analyzer fallback.
+                            </p>
                         </div>
                         
-                        <button class="btn btn-primary btn-glow w-full" id="extract-button">
-                            <span class="flex-gap" id="extract-button-content">
+                        <button class="btn btn-primary btn-glow w-full" id="extract-button" style="padding: 0.9rem; font-size: 1rem;">
+                            <span class="flex-gap" id="extract-button-content" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;">
                                 <i class='bx bxs-magic-wand'></i>
                                 Start AI Extraction
                             </span>
-                            <span class="flex-gap hidden" id="extracting-indicator">
+                            <span class="flex-gap hidden" id="extracting-indicator" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;">
                                 <i class='bx bx-loader-alt bx-spin'></i>
                                 Extracting Questions...
                             </span>
@@ -116,59 +150,50 @@
                 </div>
 
                 <!-- Results Section -->
-                <div class="card animate-fade-up" style="animation-delay: 100ms;">
-                    <div class="card-header">
-                        <h2 class="card-title">Extraction Results</h2>
-                        <p class="text-muted text-sm">AI-extracted questions will appear here</p>
+                <div class="card glass-card animate-fade-up" style="animation-delay: 100ms;">
+                    <div class="card-header" style="margin-bottom: 1.25rem;">
+                        <h2 class="card-title" style="font-size: 1.25rem; font-weight: 700; margin: 0;">Extraction Results</h2>
+                        <p class="text-muted text-sm" style="margin-top: 0.25rem;">AI-extracted questions will appear here</p>
                     </div>
                     <div class="card-content">
                         <!-- Placeholder: shown initially -->
-                        <div class="results-placeholder flex-center h-64" id="results-placeholder">
+                        <div class="results-placeholder flex-center h-64" id="results-placeholder" style="display: flex; align-items: center; justify-content: center; height: 16rem;">
                             <div class="text-center">
-                                <i class='bx bxs-magic-wand results-placeholder-icon'></i>
-                                <p>Upload a PDF to start extraction</p>
+                                <i class='bx bxs-magic-wand' style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 1rem; display: block;" class="animate-glow"></i>
+                                <p class="text-muted text-sm">Upload a PDF or TXT file to start extraction</p>
+                            </div>
+                        </div>
+
+                        <!-- Loading Indicator: shown during API requests -->
+                        <div class="results-placeholder flex-center h-64 hidden" id="results-loading-state" style="display: flex; align-items: center; justify-content: center; height: 16rem; flex-direction: column; gap: 1rem;">
+                            <div class="text-center" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+                                <i class='bx bx-loader-alt bx-spin text-primary' style="font-size: 3.5rem; display: block;"></i>
+                                <p class="font-bold text-primary text-sm" id="extraction-status-text">Parsing file pages...</p>
+                                <p class="text-xs text-muted" style="max-width: 250px;">This may take a moment for larger documents.</p>
                             </div>
                         </div>
 
                         <!-- Results: shown after extraction -->
-                        <div class="results-content space-y-4 hidden" id="results-content">
-                            <div class="success-message">
-                                <p class="text-sm font-medium text-green mb-1">✓ Extraction Complete</p>
-                                <p class="text-xs text-muted">Successfully extracted 25 questions</p> <!-- Example -->
+                        <div class="results-content space-y-4 hidden" id="results-content" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="success-message" style="background: var(--color-green-light); border: 1px solid rgba(40, 167, 69, 0.15); padding: 0.85rem; border-radius: 10px; display: flex; flex-direction: column; gap: 0.25rem;">
+                                <p class="text-sm font-semibold text-green" id="extraction-summary-title" style="margin: 0; display: flex; align-items: center; gap: 0.25rem;">
+                                    <i class='bx bxs-check-circle'></i> Extraction Complete
+                                </p>
+                                <p class="text-xs text-muted" id="extraction-summary-desc" style="margin: 0;">Successfully extracted 0 questions</p>
                             </div>
 
-                            <div class="space-y-3 extracted-questions-list">
-                                <!-- Example Extracted Question -->
-                                <div class="question-item">
-                                    <p class="text-sm">1. What is the derivative of sin(x)?</p>
-                                    <div class="flex-gap mt-2">
-                                        <span class="tag tag-primary">Medium</span>
-                                        <span class="tag tag-secondary">Mathematics</span>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <p class="text-sm">2. Explain Newton's First Law of Motion</p>
-                                     <div class="flex-gap mt-2">
-                                        <span class="tag tag-primary">Easy</span>
-                                        <span class="tag tag-secondary">Physics</span>
-                                    </div>
-                                </div>
-                                <div class="question-item">
-                                    <p class="text-sm">3. Calculate the area under the curve y = x² from 0 to 1</p>
-                                      <div class="flex-gap mt-2">
-                                        <span class="tag tag-primary">Hard</span>
-                                        <span class="tag tag-secondary">Mathematics</span>
-                                    </div>
-                                </div>
+                            <div class="extracted-questions-list" id="extracted-questions-list" style="max-height: 380px; overflow-y: auto; padding-right: 0.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <!-- Dynamic Question Items Injected Here -->
                             </div>
 
-                            <button class="btn btn-primary btn-glow w-full">
-                                Save to Question Bank
+                            <button class="btn btn-primary btn-glow w-full" id="save-bank-button" style="padding: 0.85rem; font-size: 1rem; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                                <i class='bx bxs-cloud-upload' style="font-size: 1.2rem;"></i> Save to Question Bank
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
             <!-- Features Section -->
             <section class="card animate-fade-up mt-8" style="animation-delay: 200ms;">

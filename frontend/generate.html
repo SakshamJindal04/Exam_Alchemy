@@ -35,7 +35,7 @@
                 <i class='bx bxs-dashboard'></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="nav-item"> <!-- Link to Upload -->
+            <a href="upload.html" class="nav-item"> <!-- Link to Upload -->
                 <i class='bx bx-upload'></i>
                 <span>Upload Question Bank</span>
             </a>
@@ -81,19 +81,24 @@
                 </div>
                 <div class="card-content space-y-6">
                     <div class="form-group space-y-2">
+                        <label>Exam Paper Title</label>
+                        <input type="text" class="form-input" id="generate-title" value="Semester Final Examination" placeholder="e.g., Semester Final Examination">
+                    </div>
+
+                    <div class="form-group space-y-2">
                         <label>Subject</label>
-                        <select class="form-select">
+                        <select class="form-select" id="generate-subject">
                             <option value="" disabled selected>Select subject</option>
-                            <option value="math">Mathematics</option>
-                            <option value="physics">Physics</option>
-                            <option value="chemistry">Chemistry</option>
-                            <option value="cs">Computer Science</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Computer Science">Computer Science</option>
                         </select>
                     </div>
 
                     <div class="form-group space-y-2">
                         <label>Total Marks</label>
-                        <input type="number" class="form-input" placeholder="e.g., 100">
+                        <input type="number" class="form-input" id="generate-total-marks" value="100" placeholder="e.g., 100">
                     </div>
 
                     <div class="form-group space-y-4">
@@ -171,30 +176,18 @@
 
                     <!-- Generated Content -->
                     <div class="space-y-4 hidden" id="preview-content">
-                        <div class="preview-box">
-                            <h3 class="font-semibold text-lg">Mathematics Final Exam</h3>
-                            <p class="text-sm text-muted">Total Marks: 100 | Duration: 3 Hours</p>
-                            
-                            <div class="space-y-2 mt-4">
-                                <p class="font-medium">Section A - Multiple Choice (30 marks)</p>
-                                <p class="text-sm text-muted">1. What is the derivative of x²?</p>
-                                <p class="text-sm text-muted">2. Solve: 2x + 5 = 15</p>
-                                <p class="text-sm text-muted">3. Find the area of a circle...</p>
-                                
-                                <p class="font-medium mt-4">Section B - Descriptive (70 marks)</p>
-                                <p class="text-sm text-muted">4. Explain the concept of limits...</p>
-                                <p class="text-sm text-muted">5. Prove the Pythagorean theorem...</p>
-                            </div>
+                        <div class="preview-box" id="paper-preview-box" style="background: var(--color-bg, #ffffff); border: 1px solid rgba(10, 77, 156, 0.15); border-radius: 12px; padding: 2rem; color: #1e293b; box-shadow: 0 4px 20px rgba(0,0,0,0.05); font-family: 'Poppins', sans-serif;">
+                            <!-- Will be dynamically populated -->
                         </div>
 
                         <div class="flex-gap">
-                            <button class="btn btn-outline flex-1">
+                            <button class="btn btn-outline flex-1" id="view-raw-btn">
                                 <i class='bx bx-show-alt'></i> <!-- Eye icon -->
-                                Preview
+                                Full Screen
                             </button>
-                            <button class="btn btn-primary btn-glow flex-1">
+                            <button class="btn btn-primary btn-glow flex-1" id="download-pdf-btn">
                                 <i class='bx bxs-download'></i>
-                                Download PDF
+                                Download PDF / Print
                             </button>
                         </div>
                     </div>
