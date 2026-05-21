@@ -599,65 +599,7 @@ body.sidebar-collapsed .content {
 }
 
 
-/* --- Responsive Design --- */
-@media (min-width: 768px) { /* md: */
-    .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-    .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-}
-@media (min-width: 1024px) { /* lg: */
-     .lg\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-     .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-}
 
-
-@media (max-width: 992px) {
-    .sidebar {
-        transform: translateX(-260px);
-    }
-    .top-nav {
-        left: 0;
-    }
-    .content {
-        margin-left: 0;
-    }
-    body.sidebar-collapsed .sidebar {
-        transform: translateX(0);
-    }
-    .logo-text {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-    .page-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    .nav-link {
-        display: none;
-    }
-    /* Stack grid columns on smaller screens */
-    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .content {
-        padding: 1rem;
-    }
-    .top-nav {
-        padding: 0 1rem;
-    }
-    /* Auth card adjustments */
-    .auth-card {
-         padding: 1.5rem;
-    }
-}
 
 /* ======== 7. LANDING PAGE STYLES (NEW INDEX.HTML) ======== */
 .landing-body {
@@ -871,9 +813,6 @@ body.sidebar-collapsed .content {
 
 /* --- Grid System (Re-used) --- */
 .grid { display: grid; gap: 1.5rem; }
-.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
 
 .section-title {
     font-size: 2rem; /* text-3xl */
@@ -1824,14 +1763,7 @@ body.sidebar-collapsed .content {
     gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
-    .student-grid-premium {
-        grid-template-columns: 1fr;
-    }
-    .contact-section-premium {
-        padding: 1.5rem;
-    }
-}
+
 
 .student-card-premium {
     background: rgba(255, 255, 255, 0.05);
@@ -1927,7 +1859,50 @@ body.sidebar-collapsed .content {
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
+/* ==========================================
+   11. RESPONSIVE MEDIA QUERIES (CONSOLIDATED)
+   ========================================== */
+
+/* --- Mobile First (min-width rules) --- */
+@media (min-width: 768px) {
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .md\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Max-Width Responsive Breakpoints --- */
+
+/* Tablet Portrait & Laptop (<= 1024px) */
+@media (max-width: 1024px) {
+    .grid-cols-3, .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Medium Screens & Tablet Collapse (<= 992px) */
 @media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-260px);
+    }
+    .top-nav {
+        left: 0;
+    }
+    .content {
+        margin-left: 0;
+    }
+    body.sidebar-collapsed .sidebar {
+        transform: translateX(0);
+    }
+    .logo-text {
+        display: none;
+    }
+    
+    /* Sidebar Header on Mobile Drawer */
     .sidebar-header {
         display: flex;
         justify-content: space-between;
@@ -1960,5 +1935,44 @@ body.sidebar-collapsed .content {
     body.sidebar-collapsed .sidebar-overlay {
         opacity: 1;
         pointer-events: auto;
+    }
+}
+
+/* Mobile Devices & Phones (<= 768px) */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .nav-link {
+        display: none;
+    }
+    /* Stack grid columns on smaller screens */
+    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    .student-grid-premium {
+        grid-template-columns: 1fr;
+    }
+    .contact-section-premium {
+        padding: 1.5rem;
+    }
+}
+
+/* Tiny Mobile & Portrait Screens (<= 480px) */
+@media (max-width: 480px) {
+    .content {
+        padding: 1rem;
+    }
+    .top-nav {
+        padding: 0 1rem;
+    }
+    /* Auth card adjustments */
+    .auth-card {
+         padding: 1.5rem;
     }
 }
