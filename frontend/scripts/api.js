@@ -25,6 +25,11 @@ async function fetchWithTimeout(resource, options = {}) {
         throw error;
     }
 }
+// Dynamic API base URL: empty string for local development (which uses local http-server proxy to port 8080),
+// and absolute API service URL on Render for production.
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? ''
+    : 'https://exam-alchemy-api.onrender.com';
 
 /**
  * Attempts to log in a user.
@@ -33,7 +38,7 @@ async function fetchWithTimeout(resource, options = {}) {
  * @returns {Promise<object>} - The JSON response from the server.
  */
 async function loginUser(email, password) {
-    const response = await fetchWithTimeout('/api/auth/login', {
+    const response = await fetchWithTimeout(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -68,7 +73,7 @@ async function loginUser(email, password) {
  * @returns {Promise<object>}
  */
 async function registerUser(username, email, password, roles) {
-    const response = await fetchWithTimeout('/api/auth/register', {
+    const response = await fetchWithTimeout(`${API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
