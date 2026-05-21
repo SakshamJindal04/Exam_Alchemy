@@ -5,10 +5,8 @@ services:
     runtime: java
     rootDir: backend
     plan: free
-    build:
-      command: mvn clean package
-    start:
-      command: java -jar target/backend-0.0.1-SNAPSHOT.jar
+    buildCommand: mvn clean package
+    startCommand: java -jar target/backend-0.0.1-SNAPSHOT.jar
     envVars:
       - key: SPRING_DATA_MONGODB_URI
         value: "mongodb+srv://saksham:Sa@12345678@mo.l6elf6u.mongodb.net/examalchemy?appName=MO"
@@ -23,10 +21,8 @@ services:
     runtime: node
     rootDir: frontend
     plan: free
-    build:
-      command: "npm install && npm run build || echo 'No build step'"
-    start:
-      command: "npx http-server ./ -p 10000"
+    buildCommand: "npm install && npm run build || echo 'No build step'"
+    startCommand: "npx http-server ./ -p 10000"
     routes:
       - type: rewrite
         source: /api/:path*
@@ -34,4 +30,5 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+
 
