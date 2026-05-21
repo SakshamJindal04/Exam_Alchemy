@@ -7,7 +7,8 @@ services:
     plan: free
     envVars:
       - key: SPRING_DATA_MONGODB_URI
-        value: "mongodb+srv://saksham:Sa%4012345678@mo.l6elf6u.mongodb.net/examalchemy?appName=MO"
+        value: "mongodb+srv://saksham:Sa%4012345678@mo.l6elf6u.mongodb.net/examalchemy?appName=MO&connectTimeoutMS=5000&socketTimeoutMS=5000&serverSelectionTimeoutMS=5000"
+
 
   - type: web
     name: exam-alchemy-app
