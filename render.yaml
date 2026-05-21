@@ -13,7 +13,6 @@ services:
     name: exam-alchemy-app
     runtime: static
     rootDir: frontend
-    plan: free
     buildCommand: "npm install && npm run build || echo 'No build step'"
     staticPublishPath: .
     routes:
