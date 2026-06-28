@@ -6,7 +6,7 @@
     <title>Sample Papers - Exam Alchemy</title>
     <!-- Link to your existing CSS file -->
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <button class="nav-icon-btn"><i class='bx bx-bell'></i></button>
-            <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" class="profile-pic">
+            <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" class="profile-pic" loading="lazy">
         </div>
     </header>
 
@@ -60,9 +60,9 @@
     <main class="content" id="main-content">
         
         <!-- Page Header -->
-        <div class="page-header animate-fade-in">
+        <div class="page-header scroll-reveal">
             <div>
-                <h1>Sample Papers</h1>
+                <h1 class="text-3xl font-bold tracking-tight">Sample Papers</h1>
                 <p class="text-muted mt-2">Practice with curated exam papers</p>
             </div>
         </div>
@@ -71,7 +71,7 @@
         <div class="papers-page-content">
 
             <!-- Search Bar -->
-            <section class="animate-fade-up">
+            <section class="scroll-reveal">
                 <div class="card">
                     <div class="card-content pt-0"> <!-- Remove card padding top -->
                        <div class="search-bar-wrapper">
@@ -89,7 +89,7 @@
             <section>
                 <div class="grid grid-cols-2">
                     <!-- Paper Card 1 -->
-                    <div class="card card-hover animate-fade-up" style="animation-delay: 0ms;">
+                    <div class="card card-hover scroll-reveal" style="animation-delay: 0ms;">
                         <div class="card-header">
                             <div class="flex-between items-start">
                                 <div>
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                     <!-- Paper Card 2 -->
-                    <div class="card card-hover animate-fade-up" style="animation-delay: 100ms;">
+                    <div class="card card-hover scroll-reveal" style="animation-delay: 100ms;">
                          <div class="card-header">
                             <div class="flex-between items-start">
                                 <div>
@@ -165,7 +165,7 @@
                         </div>
                     </div>
                     <!-- Paper Card 3 -->
-                     <div class="card card-hover animate-fade-up" style="animation-delay: 200ms;">
+                     <div class="card card-hover scroll-reveal" style="animation-delay: 200ms;">
                          <div class="card-header">
                             <div class="flex-between items-start">
                                 <div>
@@ -203,7 +203,7 @@
                         </div>
                     </div>
                     <!-- Paper Card 4 -->
-                     <div class="card card-hover animate-fade-up" style="animation-delay: 300ms;">
+                     <div class="card card-hover scroll-reveal" style="animation-delay: 300ms;">
                          <div class="card-header">
                             <div class="flex-between items-start">
                                 <div>
@@ -247,6 +247,7 @@
     </main>
 
     <!-- Link your main JavaScript file (for sidebar toggle) -->
+    <script src="scripts/auth-guard.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

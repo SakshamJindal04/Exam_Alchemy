@@ -20,15 +20,12 @@ import com.examalchemy.dto.JwtAuthResponse;
 import com.examalchemy.dto.LoginRequest;
 import com.examalchemy.dto.MessageResponse;
 import com.examalchemy.dto.SignUpRequest;
-import com.examalchemy.model.User; // <-- 1. MAKE SURE THIS IS THE CORRECT IMPORT
-// import org.springframework.security.core.userdetails.User; // <-- DELETE THIS LINE IF IT EXISTS
+import com.examalchemy.model.User;
 import com.examalchemy.repository.UserRepository;
 import com.examalchemy.security.JwtTokenProvider;
 
 import jakarta.validation.Valid;
-import lombok.Data;
 
-@Data
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -58,10 +55,8 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken(authentication);
 
-        // This line requires the correct "import com.examalchemy.model.User;"
         User userDetails = (User) authentication.getPrincipal();
 
-        // These methods (getId, getEmail, etc.) will now work
         return ResponseEntity.ok(new JwtAuthResponse(
             jwt,
             userDetails.getId(),
@@ -74,23 +69,14 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            return new ResponseEntity<>("Error: Email is already in use!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageResponse("Error: Email is already in use!"), HttpStatus.BAD_REQUEST);
         }
 
-        // --- 2. Corrected Role Logic ---
+        // All new users are assigned ROLE_STUDENT by default.
+        // Teacher role should be granted by an admin, not self-assigned during registration.
         Set<String> roles = new HashSet<>();
-        
-        // Check if the provided roles list contains "teacher" (case-insensitive)
-        if (signUpRequest.getRoles() != null && 
-            signUpRequest.getRoles().stream().anyMatch(role -> role.equalsIgnoreCase("teacher"))) {
-            
-            roles.add("ROLE_TEACHER");
-        
-        } else {
-            // If no teacher role is found, or if roles are empty, default to student
-            roles.add("ROLE_STUDENT");
-        }
-        // --- End of Corrected Logic ---
+        roles.add("ROLE_STUDENT");
+
         // Create new user's account
         User user = new User(
             signUpRequest.getUsername(),

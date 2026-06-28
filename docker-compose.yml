@@ -1,0 +1,45 @@
+
+
+services:
+  # MongoDB database
+  mongodb:
+    image: mongo:7
+    container_name: examalchemy-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  # Spring Boot backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: examalchemy-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/examalchemy
+      - JWT_SECRET=${JWT_SECRET:-dev-only-secret-do-not-use-in-production}
+      - JWT_EXPIRATION=${JWT_EXPIRATION:-86400000}
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+  # Frontend static server
+  frontend:
+    image: node:20-alpine
+    container_name: examalchemy-frontend
+    working_dir: /app
+    command: npx -y http-server ./frontend -p 5500 -c-1 --proxy http://backend:8080
+    ports:
+      - "5500:5500"
+    volumes:
+      - ./frontend:/app/frontend:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  mongo-data:

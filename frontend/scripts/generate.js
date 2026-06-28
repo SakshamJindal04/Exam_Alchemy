@@ -26,6 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
     let isLoading = false;
     let generatedPaperData = null; // Holds active generated paper markup & data
 
+    // Utility: Escape HTML to prevent XSS when inserting user content
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     // --- Slider Value Balancing Logic ---
     easySlider.addEventListener('input', () => balanceSliders('easy'));
     mediumSlider.addEventListener('input', () => balanceSliders('medium'));
@@ -242,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const options = generateOptionsForQuestion(q.questionText);
             return `
                 <div style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.5;">
-                    <p style="margin: 0 0 0.5rem 0; font-weight: 500;">Q${idx + 1}. ${q.questionText} <span style="float: right; font-weight: 400; font-size: 0.85rem; color: #64748b;">[${q.difficulty} | 2 Marks]</span></p>
+                    <p style="margin: 0 0 0.5rem 0; font-weight: 500;">Q${idx + 1}. ${escapeHtml(q.questionText)} <span style="float: right; font-weight: 400; font-size: 0.85rem; color: #64748b;">[${escapeHtml(q.difficulty)} | 2 Marks]</span></p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding-left: 1.25rem;">
                         <div>A) ${options[0]}</div>
                         <div>B) ${options[1]}</div>
@@ -257,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const marks = q.difficulty === 'HARD' ? 12 : 6;
             return `
                 <div style="margin-bottom: 1.25rem; font-size: 0.95rem; line-height: 1.5;">
-                    <p style="margin: 0 0 0.25rem 0; font-weight: 500;">Q${mcqs.length + idx + 1}. ${q.questionText} <span style="float: right; font-weight: 400; font-size: 0.85rem; color: #64748b;">[${q.difficulty} | ${marks} Marks]</span></p>
+                    <p style="margin: 0 0 0.25rem 0; font-weight: 500;">Q${mcqs.length + idx + 1}. ${escapeHtml(q.questionText)} <span style="float: right; font-weight: 400; font-size: 0.85rem; color: #64748b;">[${escapeHtml(q.difficulty)} | ${marks} Marks]</span></p>
                     <p style="margin: 0 0 0.5rem 0; color: #64748b; font-size: 0.85rem; padding-left: 1.25rem; font-style: italic;">Explain your reasoning and show intermediate calculations where applicable.</p>
                 </div>
             `;

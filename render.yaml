@@ -7,7 +7,9 @@ services:
     plan: free
     envVars:
       - key: SPRING_DATA_MONGODB_URI
-        value: "mongodb+srv://saksham:Sa%4012345678@mo.l6elf6u.mongodb.net/examalchemy?appName=MO&connectTimeoutMS=5000&socketTimeoutMS=5000&serverSelectionTimeoutMS=5000"
+        sync: false  # Set this value as a secret in the Render dashboard
+      - key: JWT_SECRET
+        sync: false  # Set this value as a secret in the Render dashboard
 
 
   - type: web

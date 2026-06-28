@@ -6,7 +6,7 @@
     <title>AI Extract - Exam Alchemy</title>
     <!-- Link to your existing CSS file -->
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- PDF.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
@@ -23,7 +23,7 @@
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <button class="nav-icon-btn"><i class='bx bx-bell'></i></button>
-            <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-pic"> <!-- Teacher profile pic -->
+            <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-pic" loading="lazy"> <!-- Teacher profile pic -->
         </div>
     </header>
 
@@ -66,9 +66,9 @@
     <main class="content" id="main-content">
         
         <!-- Page Header -->
-        <div class="page-header animate-fade-in">
+        <div class="page-header scroll-reveal">
             <div>
-                <h1>AI Question Extraction</h1>
+                <h1 class="text-3xl font-bold tracking-tight">AI Question Extraction</h1>
                 <p class="text-muted mt-2">Extract questions from PDFs using AI</p>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <div class="extract-content">
             <div class="grid grid-cols-2 gap-6" style="gap: 1.5rem; align-items: start;">
                 <!-- Upload Section -->
-                <div class="card glass-card animate-fade-up">
+                <div class="card glass-card scroll-reveal">
                     <div class="card-header" style="margin-bottom: 1.25rem;">
                         <h2 class="card-title flex-gap" style="font-size: 1.25rem; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
                             <i class='bx bxs-magic-wand text-primary animate-glow'></i>
@@ -141,7 +141,7 @@
                                 <i class='bx bxs-magic-wand'></i>
                                 Start AI Extraction
                             </span>
-                            <span class="flex-gap hidden" id="extracting-indicator" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%;">
+                            <span class="flex-gap hidden" id="extracting-indicator">
                                 <i class='bx bx-loader-alt bx-spin'></i>
                                 Extracting Questions...
                             </span>
@@ -150,22 +150,22 @@
                 </div>
 
                 <!-- Results Section -->
-                <div class="card glass-card animate-fade-up" style="animation-delay: 100ms;">
+                <div class="card glass-card scroll-reveal" style="animation-delay: 100ms;">
                     <div class="card-header" style="margin-bottom: 1.25rem;">
                         <h2 class="card-title" style="font-size: 1.25rem; font-weight: 700; margin: 0;">Extraction Results</h2>
                         <p class="text-muted text-sm" style="margin-top: 0.25rem;">AI-extracted questions will appear here</p>
                     </div>
                     <div class="card-content">
                         <!-- Placeholder: shown initially -->
-                        <div class="results-placeholder flex-center h-64" id="results-placeholder" style="display: flex; align-items: center; justify-content: center; height: 16rem;">
+                        <div class="results-placeholder flex-center h-64" id="results-placeholder">
                             <div class="text-center">
-                                <i class='bx bxs-magic-wand' style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 1rem; display: block;" class="animate-glow"></i>
+                                <i class='bx bxs-magic-wand animate-glow' style="font-size: 3rem; color: var(--color-primary); opacity: 0.6; margin-bottom: 1rem; display: block;"></i>
                                 <p class="text-muted text-sm">Upload a PDF or TXT file to start extraction</p>
                             </div>
                         </div>
 
                         <!-- Loading Indicator: shown during API requests -->
-                        <div class="results-placeholder flex-center h-64 hidden" id="results-loading-state" style="display: flex; align-items: center; justify-content: center; height: 16rem; flex-direction: column; gap: 1rem;">
+                        <div class="results-placeholder flex-center h-64 hidden" id="results-loading-state">
                             <div class="text-center" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
                                 <i class='bx bx-loader-alt bx-spin text-primary' style="font-size: 3.5rem; display: block;"></i>
                                 <p class="font-bold text-primary text-sm" id="extraction-status-text">Parsing file pages...</p>
@@ -174,7 +174,7 @@
                         </div>
 
                         <!-- Results: shown after extraction -->
-                        <div class="results-content space-y-4 hidden" id="results-content" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="results-content space-y-4 hidden" id="results-content">
                             <div class="success-message" style="background: var(--color-green-light); border: 1px solid rgba(40, 167, 69, 0.15); padding: 0.85rem; border-radius: 10px; display: flex; flex-direction: column; gap: 0.25rem;">
                                 <p class="text-sm font-semibold text-green" id="extraction-summary-title" style="margin: 0; display: flex; align-items: center; gap: 0.25rem;">
                                     <i class='bx bxs-check-circle'></i> Extraction Complete
@@ -196,7 +196,7 @@
         </div>
 
             <!-- Features Section -->
-            <section class="card animate-fade-up mt-8" style="animation-delay: 200ms;">
+            <section class="card scroll-reveal mt-8" style="animation-delay: 200ms;">
                 <div class="card-header">
                     <h2 class="card-title">AI Extraction Features</h2>
                 </div>
@@ -213,17 +213,17 @@
                             <p class="text-sm text-muted">Maintains original formatting and structure</p>
                         </div>
                         <div class="feature-box">
-                             <i class='bx bx-bar-chart-alt-2 feature-icon'></i>
+                            <i class='bx bx-bar-chart-alt-2 feature-icon'></i>
                             <h3 class="font-semibold mb-1">Auto Classification</h3>
                             <p class="text-sm text-muted">Assigns difficulty and subject automatically</p>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
     </main>
 
     <!-- Link JS Files -->
+    <script src="scripts/auth-guard.js"></script>
     <script src="scripts/main.js"></script> <!-- For sidebar toggle -->
     <script src="scripts/extract.js"></script> <!-- New script for this page -->
 </body>

@@ -37,9 +37,17 @@ document.addEventListener("DOMContentLoaded", function() {
     let isExtracting = false;
     let currentQuestions = [];
 
+    // Utility: Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     // --- Initialize API Key from localStorage ---
     if (localStorage.getItem('gemini_api_key')) {
         apiKeyInput.value = localStorage.getItem('gemini_api_key');
+        console.warn('⚠️ Gemini API key loaded from localStorage. Avoid storing API keys in the browser for production use.');
     }
 
     // Save API key when changed
@@ -395,7 +403,7 @@ ${textSample}`;
             questionItem.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: start; gap: 1rem;">
                     <p class="text-sm font-semibold text-foreground" style="margin: 0; line-height: 1.4;">
-                        ${index + 1}. ${q.question}
+                        ${index + 1}. ${escapeHtml(q.question)}
                     </p>
                 </div>
                 <div class="flex-gap mt-3" style="display: flex; gap: 0.5rem; margin-top: 0.75rem;">

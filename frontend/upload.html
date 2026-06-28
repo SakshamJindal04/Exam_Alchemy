@@ -6,7 +6,7 @@
     <title>Upload Questions - Exam Alchemy</title>
     <!-- Link to your existing CSS file -->
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <button class="nav-icon-btn"><i class='bx bx-bell'></i></button>
-            <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-pic"> <!-- Teacher profile pic -->
+            <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-pic" loading="lazy"> <!-- Teacher profile pic -->
         </div>
     </header>
 
@@ -64,9 +64,9 @@
     <main class="content" id="main-content">
         
         <!-- Page Header -->
-        <div class="page-header animate-fade-in">
+        <div class="page-header scroll-reveal">
             <div>
-                <h1>Upload Question Bank</h1>
+                <h1 class="text-3xl font-bold tracking-tight">Upload Question Bank</h1>
                 <p class="text-muted mt-2">Upload questions to build your exam database</p>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="upload-content">
             <div class="grid grid-cols-2">
                 <!-- Upload Section -->
-                <div class="card animate-fade-up">
+                <div class="card scroll-reveal">
                     <div class="card-header">
                         <h2 class="card-title">Upload File</h2>
                         <p class="text-muted text-sm">Drag and drop or click to upload</p>
@@ -105,7 +105,7 @@
                 </div>
 
                 <!-- Metadata Section -->
-                <div class="card animate-fade-up" style="animation-delay: 100ms;">
+                <div class="card scroll-reveal" style="animation-delay: 100ms;">
                     <div class="card-header">
                         <h2 class="card-title">Question Metadata</h2>
                         <p class="text-muted text-sm">Set default properties for uploaded questions</p>
@@ -139,7 +139,7 @@
             </div>
 
             <!-- Preview Table (Initially Hidden) -->
-            <section class="card animate-fade-up mt-8 hidden" id="preview-section" style="animation-delay: 200ms;">
+            <section class="card scroll-reveal mt-8 hidden" id="preview-section" style="animation-delay: 200ms;">
                  <div class="card-header">
                     <h2 class="card-title">Question Preview</h2>
                     <p class="text-muted text-sm">Review and edit uploaded questions</p>
@@ -165,6 +165,7 @@
     </main>
 
     <!-- Link JS Files -->
+    <script src="scripts/auth-guard.js"></script>
     <script src="scripts/main.js"></script> <!-- For sidebar toggle -->
     <script src="scripts/upload.js"></script> <!-- New script for this page -->
 </body>

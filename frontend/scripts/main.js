@@ -62,4 +62,94 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+
+    // --- 3. DARK MODE TOGGLE (GLOBAL) ---
+    const initDarkMode = () => {
+        // Create toggle button
+        const themeBtn = document.createElement('button');
+        themeBtn.id = 'theme-toggle-btn';
+        themeBtn.className = 'theme-toggle-btn';
+        themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+        document.body.appendChild(themeBtn);
+
+        // Check local storage for preference
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeBtn.innerHTML = "<i class='bx bx-sun'></i>";
+        } else {
+            themeBtn.innerHTML = "<i class='bx bx-moon'></i>";
+        }
+
+        // Toggle event
+        themeBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeBtn.innerHTML = "<i class='bx bx-moon'></i>";
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeBtn.innerHTML = "<i class='bx bx-sun'></i>";
+            }
+        });
+    };
+    initDarkMode();
+    // --- 4. SCROLL REVEAL ANIMATIONS ---
+    const observeElements = () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: Stop observing once animated if we only want it once
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        // Select elements to animate.
+        const elementsToAnimate = document.querySelectorAll('.scroll-reveal, .card');
+        elementsToAnimate.forEach(el => {
+            if (!el.classList.contains('scroll-reveal')) {
+                el.classList.add('scroll-reveal'); // Add base class for JS animations if missing
+            }
+            observer.observe(el);
+        });
+    };
+    observeElements();
+    // --- 5. ROTATING QUOTES ---
+    const quoteContainer = document.getElementById('quote-container');
+    if (quoteContainer) {
+        const quotes = [
+            "\"Education is not the learning of facts, but the training of the mind to think.\" – Albert Einstein",
+            "\"The beautiful thing about learning is that nobody can take it away from you.\" – B.B. King",
+            "\"Success is no accident. It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing.\" – Pelé",
+            "\"Don't let what you cannot do interfere with what you can do.\" – John Wooden",
+            "\"The expert in anything was once a beginner.\" – Helen Hayes"
+        ];
+        
+        const changeQuote = () => {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            quoteContainer.style.opacity = '0';
+            setTimeout(() => {
+                quoteContainer.textContent = randomQuote;
+                quoteContainer.style.opacity = '1';
+            }, 500);
+        };
+        
+        // Initial setup
+        quoteContainer.style.transition = 'opacity 0.5s ease';
+        changeQuote();
+        
+        // Rotate every 10 seconds
+        setInterval(changeQuote, 10000);
+    }
+
 });

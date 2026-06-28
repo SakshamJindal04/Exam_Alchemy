@@ -6,7 +6,7 @@
     <title>Student Dashboard - Exam Alchemy</title>
     <!-- Link to your existing CSS file -->
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -22,7 +22,7 @@
             <a href="about.html" class="nav-link">About</a>
             <button class="nav-icon-btn"><i class='bx bx-bell'></i></button>
             <!-- Placeholder profile pic -->
-            <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" class="profile-pic">
+            <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" class="profile-pic" loading="lazy">
         </div>
     </header>
 
@@ -62,9 +62,9 @@
     <main class="content" id="main-content">
         
         <!-- Page Header -->
-        <div class="page-header animate-fade-in">
+        <div class="page-header scroll-reveal">
             <div>
-                <h1>Welcome back, Student! 📚</h1>
+                <h1 class="text-3xl font-bold tracking-tight">Welcome back, <span style="white-space: nowrap;">Student! 📚</span></h1>
                 <p class="text-muted mt-2">Ready to ace your exams? Let's get started.</p>
             </div>
             <!-- Optional: Add buttons if needed -->
@@ -77,7 +77,7 @@
             <section>
                 <div class="grid grid-cols-3">
                     <a href="papers.html" class="quick-link-card-link"> <!-- Link to PYQ page later -->
-                        <div class="card card-hover animate-fade-up" style="animation-delay: 0ms;">
+                        <div class="card card-hover scroll-reveal" style="animation-delay: 0ms;">
                             <div class="card-header">
                                 <div class="card-icon-wrapper">
                                     <div class="card-icon-bg bg-primary-light">
@@ -92,7 +92,7 @@
                         </div>
                     </a>
                     <a href="papers.html" class="quick-link-card-link"> <!-- Link to Sample Papers page later -->
-                        <div class="card card-hover animate-fade-up" style="animation-delay: 100ms;">
+                        <div class="card card-hover scroll-reveal" style="animation-delay: 100ms;">
                             <div class="card-header">
                                 <div class="card-icon-wrapper">
                                     <div class="card-icon-bg bg-primary-light">
@@ -107,7 +107,7 @@
                         </div>
                     </a>
                      <a href="tests.html" class="quick-link-card-link"> <!-- Link to Tests page later -->
-                        <div class="card card-hover animate-fade-up" style="animation-delay: 200ms;">
+                        <div class="card card-hover scroll-reveal" style="animation-delay: 200ms;">
                             <div class="card-header">
                                 <div class="card-icon-wrapper">
                                     <div class="card-icon-bg bg-primary-light">
@@ -129,7 +129,7 @@
                 <h2 class="section-title">Available Subjects</h2>
                 <div class="grid grid-cols-3">
                     <!-- Subject Cards - Repeat this block for each subject -->
-                    <div class="card subject-card card-hover animate-fade-up" style="animation-delay: 300ms;">
+                    <div class="card subject-card card-hover scroll-reveal" style="animation-delay: 300ms;">
                         <div class="subject-card-bg bg-gradient-blue"></div>
                         <div class="card-header relative">
                             <div class="subject-icon">📐</div>
@@ -137,7 +137,7 @@
                             <p class="text-muted text-sm">12 papers available</p>
                         </div>
                     </div>
-                    <div class="card subject-card card-hover animate-fade-up" style="animation-delay: 400ms;">
+                    <div class="card subject-card card-hover scroll-reveal" style="animation-delay: 400ms;">
                         <div class="subject-card-bg bg-gradient-purple"></div>
                         <div class="card-header relative">
                             <div class="subject-icon">⚛️</div>
@@ -145,7 +145,7 @@
                             <p class="text-muted text-sm">8 papers available</p>
                         </div>
                     </div>
-                    <div class="card subject-card card-hover animate-fade-up" style="animation-delay: 500ms;">
+                    <div class="card subject-card card-hover scroll-reveal" style="animation-delay: 500ms;">
                         <div class="subject-card-bg bg-gradient-green"></div>
                         <div class="card-header relative">
                             <div class="subject-icon">🧪</div>
@@ -153,7 +153,7 @@
                             <p class="text-muted text-sm">10 papers available</p>
                         </div>
                     </div>
-                     <div class="card subject-card card-hover animate-fade-up" style="animation-delay: 600ms;">
+                     <div class="card subject-card card-hover scroll-reveal" style="animation-delay: 600ms;">
                         <div class="subject-card-bg bg-gradient-orange"></div>
                         <div class="card-header relative">
                             <div class="subject-icon">💻</div>
@@ -161,7 +161,7 @@
                             <p class="text-muted text-sm">15 papers available</p>
                         </div>
                     </div>
-                     <div class="card subject-card card-hover animate-fade-up" style="animation-delay: 700ms;">
+                     <div class="card subject-card card-hover scroll-reveal" style="animation-delay: 700ms;">
                         <div class="subject-card-bg bg-gradient-pink"></div>
                         <div class="card-header relative">
                             <div class="subject-icon">🧬</div>
@@ -169,7 +169,7 @@
                             <p class="text-muted text-sm">7 papers available</p>
                         </div>
                     </div>
-                     <div class="card subject-card card-hover animate-fade-up" style="animation-delay: 800ms;">
+                     <div class="card subject-card card-hover scroll-reveal" style="animation-delay: 800ms;">
                         <div class="subject-card-bg bg-gradient-yellow"></div>
                         <div class="card-header relative">
                             <div class="subject-icon">📚</div>
@@ -181,9 +181,16 @@
                 </div>
             </section>
         </div>
+        
+        <!-- Rotating Quote Section -->
+        <div id="quote-container" class="mt-8 mb-4 text-center text-muted italic text-sm scroll-reveal">
+            <!-- Populated by JS -->
+        </div>
+
     </main>
 
     <!-- Link your main JavaScript file (for sidebar toggle) -->
+    <script src="scripts/auth-guard.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

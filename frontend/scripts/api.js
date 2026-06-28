@@ -28,7 +28,7 @@ async function fetchWithTimeout(resource, options = {}) {
 // Dynamic API base URL: empty string for local development (which uses local http-server proxy to port 8080),
 // and absolute API service URL on Render for production.
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-    ? ''
+    ? 'http://localhost:8080'
     : 'https://exam-alchemy-api.onrender.com';
 
 /**

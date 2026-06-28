@@ -13,8 +13,20 @@ RUN mvn clean package -DskipTests
 # Stage 2: Runtime stage
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
+
+# Create non-root user for security
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 COPY --from=build /app/target/*.jar app.jar
 
-# Run on port 8080
+# Set ownership to non-root user
+RUN chown appuser:appgroup app.jar
+USER appuser
+
+# Run on port 8080 with sensible JVM memory limits
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]

@@ -6,7 +6,7 @@
     <title>Practice Test - Exam Alchemy</title>
     <!-- Link to your existing CSS file -->
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <button class="nav-icon-btn"><i class='bx bx-bell'></i></button>
-            <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" class="profile-pic">
+            <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" class="profile-pic" loading="lazy">
         </div>
     </header>
 
@@ -60,11 +60,11 @@
     <main class="content" id="main-content">
 
         <!-- Test View (Visible initially) -->
-        <div id="test-view" class="test-view animate-fade-in">
+        <div id="test-view" class="test-view scroll-reveal">
             <!-- Test Header -->
             <div class="page-header flex-between items-start">
                 <div>
-                    <h1>Mathematics Practice Test</h1>
+                    <h1 class="text-3xl font-bold tracking-tight">Mathematics Practice Test</h1>
                     <p class="text-muted mt-2">Answer all questions to complete the test</p>
                 </div>
                 <div class="card timer-card">
@@ -79,7 +79,7 @@
             </div>
 
             <!-- Progress -->
-            <div class="card progress-card animate-fade-up">
+            <div class="card progress-card scroll-reveal">
                 <div class="card-content pt-0">
                     <div class="progress-info">
                         <span class="font-semibold">Progress</span>
@@ -92,7 +92,7 @@
             </div>
 
             <!-- Question Card -->
-            <div class="card question-card animate-fade-up" style="animation-delay: 100ms;">
+            <div class="card question-card scroll-reveal" style="animation-delay: 100ms;">
                 <div class="card-header">
                     <h2 class="card-title" id="question-number">Question 1</h2>
                     <p class="text-muted text-sm">Select the correct answer</p>
@@ -124,7 +124,7 @@
         </div>
 
         <!-- Results View (Hidden initially) -->
-        <div id="results-view" class="results-view animate-fade-in" style="display: none;">
+        <div id="results-view" class="results-view scroll-reveal" style="display: none;">
             <div class="card text-center">
                 <div class="card-header">
                      <div class="results-icon-wrapper">
@@ -163,6 +163,7 @@
     </main>
 
     <!-- Link JS files -->
+    <script src="scripts/auth-guard.js"></script>
     <script src="scripts/main.js"></script> <!-- Sidebar toggle -->
     <script src="scripts/test.js"></script> <!-- Test logic -->
 </body>

@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    // Utility: Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     // --- Interactive Test Questions ---
     const questions = [
         {
@@ -202,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             ${isCorrect ? "<i class='bx bx-check'></i> Correct" : "<i class='bx bx-x'></i> Incorrect"}
                         </span>
                     </div>
-                    <h4 style="margin: 0 0 0.75rem 0; font-weight: 600; padding-right: 6rem; line-height: 1.4;">Q${idx + 1}. ${q.question}</h4>
+                    <h4 style="margin: 0 0 0.75rem 0; font-weight: 600; padding-right: 6rem; line-height: 1.4;">Q${idx + 1}. ${escapeHtml(q.question)}</h4>
                     <div style="display: flex; flex-direction: column; gap: 0.5rem; padding-left: 0.75rem;">
             `;
 

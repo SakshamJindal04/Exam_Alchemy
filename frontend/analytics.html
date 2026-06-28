@@ -6,7 +6,7 @@
     <title>Analytics - Exam Alchemy</title>
     <!-- Link to your existing CSS file -->
     <link rel="stylesheet" href="styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <a href="index.html" class="nav-link">Home</a>
             <a href="about.html" class="nav-link">About</a>
             <button class="nav-icon-btn"><i class='bx bx-bell'></i></button>
-            <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-pic"> <!-- Teacher profile pic -->
+            <img src="https://i.pravatar.cc/150?img=12" alt="User Profile" class="profile-pic" loading="lazy"> <!-- Teacher profile pic -->
         </div>
     </header>
 
@@ -64,9 +64,9 @@
     <main class="content" id="main-content">
         
         <!-- Page Header -->
-        <div class="page-header animate-fade-in">
+        <div class="page-header scroll-reveal">
             <div>
-                <h1>Analytics Dashboard</h1>
+                <h1 class="text-3xl font-bold tracking-tight">Analytics Dashboard</h1>
                 <p class="text-muted mt-2">Track your exam statistics and performance</p>
             </div>
         </div>
@@ -76,7 +76,7 @@
 
             <!-- Summary Cards -->
             <section class="grid grid-cols-3">
-                <div class="card summary-card animate-fade-up">
+                <div class="card summary-card scroll-reveal">
                     <div class="card-header flex-row space-between pb-2">
                         <h3 class="card-title-sm">Total Questions</h3>
                         <i class='bx bxs-book-open text-primary card-header-icon'></i>
@@ -89,7 +89,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="card summary-card animate-fade-up" style="animation-delay: 100ms;">
+                <div class="card summary-card scroll-reveal" style="animation-delay: 100ms;">
                      <div class="card-header flex-row space-between pb-2">
                         <h3 class="card-title-sm">Papers Generated</h3>
                         <i class='bx bxs-file-blank text-primary card-header-icon'></i>
@@ -102,7 +102,7 @@
                         </p>
                     </div>
                 </div>
-                 <div class="card summary-card animate-fade-up" style="animation-delay: 200ms;">
+                 <div class="card summary-card scroll-reveal" style="animation-delay: 200ms;">
                      <div class="card-header flex-row space-between pb-2">
                         <h3 class="card-title-sm">Subjects Covered</h3>
                         <i class='bx bxs-target-lock text-primary card-header-icon'></i>
@@ -116,7 +116,7 @@
 
             <!-- Charts -->
             <section class="grid grid-cols-2">
-                <div class="card animate-fade-up" style="animation-delay: 300ms;">
+                <div class="card scroll-reveal" style="animation-delay: 300ms;">
                     <div class="card-header">
                         <h2 class="card-title">Difficulty Distribution</h2>
                         <p class="text-muted text-sm">Question difficulty breakdown</p>
@@ -155,7 +155,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-fade-up" style="animation-delay: 400ms;">
+                <div class="card scroll-reveal" style="animation-delay: 400ms;">
                     <div class="card-header">
                         <h2 class="card-title">Subject Coverage</h2>
                         <p class="text-muted text-sm">Questions per subject</p>
@@ -206,7 +206,7 @@
             </section>
 
              <!-- Recent Activity -->
-            <section class="animate-fade-up" style="animation-delay: 500ms;">
+            <section class="scroll-reveal" style="animation-delay: 500ms;">
                  <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">Recent Activity</h2>
@@ -261,6 +261,7 @@
     </main>
 
     <!-- Link your main JavaScript file (for sidebar toggle) -->
+    <script src="scripts/auth-guard.js"></script>
     <script src="scripts/main.js"></script>
     <!-- Optional: Add Chart.js script if you want dynamic charts -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->

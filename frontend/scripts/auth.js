@@ -91,15 +91,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 if (data.token) {
                     localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('userRoles', JSON.stringify(data.roles || []));
+                    localStorage.setItem('userName', data.username || '');
+                    localStorage.setItem('userEmail', data.email || '');
                 }
                 
                 alert('Login successful! Redirecting to dashboard...');
                 
-                // Redirect to the correct dashboard based on role
-                if (selectedRole === 'teacher') {
-                    window.location.href = 'dashboard.html'; // Or teacher-dashboard.html
+                // Redirect based on server-provided role, not client-side toggle
+                const isTeacher = data.roles && (data.roles.includes('ROLE_TEACHER') || data.roles.includes('teacher'));
+                if (isTeacher) {
+                    window.location.href = 'dashboard.html';
                 } else {
-                    window.location.href = 'student.html'; // Or student-dashboard.html
+                    window.location.href = 'student.html';
                 }
 
             } catch (error) {
